@@ -37,8 +37,8 @@ createApp({
             }
             else{
                 this.hasError = true;
-                this.newtask = '';
             }
+            this.newtask = '';
         },
         removeTask(index){
             this.myList.splice(index, 1);
