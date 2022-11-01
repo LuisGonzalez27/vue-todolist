@@ -1,0 +1,19 @@
+body{
+    background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+}
+.done{
+    text-decoration: line-through;
+    text-decoration-thickness: 0.4rem;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+.blue{
+    color: blue;
+}
+.fa-solid{
+    cursor: pointer;
+}

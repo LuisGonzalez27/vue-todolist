@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap 5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script> -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>TO DO LIST</title>
+</head>
+<body>
+    <div class="container text-center pt-5 col-3" id="app">
+        <h1 class="display-1 text-uppercase">to do list</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Aggiungi una faccenda" v-model="newtask" @keyup.enter="addTask">
+            <span class="input-group-text green" @click="addTask"><i class="fa-solid fa-circle-plus fa-beat"></i></span>
+        </div>
+        <div v-if="hasError" class="display-6 red py-2">
+            Il task deve essere di almeno &#51; caratteri&#160;<i class="fa-solid fa-triangle-exclamation fa-shake"></i>
+        </div>
+        
+        <ul v-if="myList.length > 0" class="list-unstyled">
+            <li v-for="(myList,index) in myList" :key="index">
+                <div class="input-group mb-3">
+                    <span class="input-group-text blue" @click="doneTask(index)"><i class="fa-solid fa-check"></i></i></span>
+                    <div :class="{ done: myList.done }" class="form-control">{{myList.text}}</div>
+                    <span class="input-group-text" @click.stop="removeTask(index)"><i class="fa-solid fa-trash"></i></span>
+                </div>
+            </li>
+        </ul>
+        <!-- frattelo del v-if del ul -->
+        <div v-else class="display-6">Hai fatto tutte le faccende&comma; bravo&#160;<i class="fa-solid fa-thumbs-up fa-bounce  green"></i></div>
+
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
